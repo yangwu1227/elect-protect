@@ -1,0 +1,31 @@
+Package: ElectProtect
+Title: A survey dashboard on fair election 
+Version: 0.0.0.9000
+Authors@R: 
+    person("Yang", "Wu", , "yangwu2020@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-9847-0112"))
+Description: A dashboard functioning as a user interface for analyzing survey results.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0
+Imports: 
+    bs4Dash,
+    data.table,
+    DBI,
+    dplyr,
+    DT,
+    forcats,
+    fresh,
+    htmltools,
+    labelled,
+    markdown,
+    plotly,
+    RSQLite,
+    shiny,
+    shinyjs,
+    stringi,
+    stringr,
+    utils,
+    vctrs (>= 0.4.1),
+    waiter
