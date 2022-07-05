@@ -24,7 +24,6 @@ app_sys <- function(...) {
 }
 
 
-
 #' Function for computing ranked DataFrame
 #'
 #' Function to rank multiple-selection columns after grouping by a modeled column.

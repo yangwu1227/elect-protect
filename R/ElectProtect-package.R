@@ -17,5 +17,6 @@
 #' @importFrom data.table fcase
 #' @importFrom data.table rbindlist
 #' @importFrom data.table setkeyv
+#' @importFrom data.table transpose
 ## usethis namespace: end
 NULL
