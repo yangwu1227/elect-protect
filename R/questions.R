@@ -11,10 +11,7 @@
 questions <- function() {
 
   # Multiple selection questions
-  message <- "Below are several statements made about American elections.
-  Using a scale of zero to ten, please indicate how much you agree or disagree with the following statements.
-  Zero indicates strong disagreement, ten indicates strong agreement, and five is neutral, neither agree or disagree.
-  Use any number from zero to ten, the higher the number, the more you agree with the statement. Please indicate if you don't know."
+  message <- "Using a scale of zero to ten, how much do you agree or disagree with this statement? Use -999 if you don't know."
   most_concern <- "There are many potential threats to free and fair elections. Please select up to three that are most concerning to you."
   least_concern <- "There are many potential threats to free and fair elections. Please select up to three that are least concerning to you."
   least_informed <- "There are many potential threats to free and fair elections. Please select up to three you feel least informed about."
@@ -51,12 +48,11 @@ questions <- function() {
       "party_identification" = "Putting aside your current personal satisfaction or dissatisfaction with political parties, to what extent, if any, do you identify with a political party?",
       "party_identification_change" = "Has your feeling of party identification increased, decreased or stayed the same over the past ten years?",
       # Messages
-      "message_benson" = message,
-      "message_trump" = message,
-      "message_griswold" = message,
-      "message_greenhalgh" = message,
-      "message_hawley" = message,
-      "message_melanson" = message,
+      "message_benson" = paste0(HTML("<i>'As the assault on democracy continues here and abroad, we must remember that by spreading misinformation, proponents of the Big Lie are essentially doing the work of our foreign adversaries for them.'</i> "), message),
+      "message_trump" = paste0(HTML("<i>'We will never give up. We will never concede... You don't concede when there's election theft involved. Our country has had enough. We will not take it anymore, and that is what this is all about... we will stop the steal.'</i> "), message),
+      "message_griswold" = paste0(HTML("<i>'We cannot allow dedicated election workers and civil servants to feel unsafe and unprotected. Democracy is not possible without public servants who can freely and fairly administer elections.'</i> "), message),
+      "message_greenhalgh" = paste0(HTML("<i>'Election officials are rightly trying hard to combat [misinformation and intentional lies] about election security. However, we also have legitimate security issues with our elections that need to be addressed honestly and forthrightly.'</i> "), message),
+      "message_hawley" = paste0(HTML("<i>'The debacle of the 2020 election has made clear that serious reforms are needed to protect the integrity of our elections. The American people deserve transparency - that means banning ballot harvesting, empowering poll watchers, and taking steps to ensure that all legally cast ballots are accounted for.'</i> "), message),
       # Election (Most concerning)
       "most_concern_law_and_regulation" = paste0(most_concern, law_and_regulation),
       "most_concern_insuf_early_or_by_mail_voting" = paste0(most_concern, insuf_voting),

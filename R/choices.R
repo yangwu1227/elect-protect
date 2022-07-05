@@ -24,12 +24,11 @@ choices <- function() {
         "Party Identification Change" = "party_identification_change"
       ),
       "Political Messaging" = c(
-        "Jocelyn Benson" = "message_benson",
-        "Donald Trump" = "message_trump",
-        "Jena Griswold" = "message_griswold",
-        "Susan Greenhalgh" = "message_greenhalgh",
-        "Josh Hawley" = "message_hawley",
-        "Mike Melanson" = "message_melanson"
+        "Jocelyn Benson (SecState of Michigan)" = "message_benson",
+        "Donald Trump (Former POTUS)" = "message_trump",
+        "Jena Griswold (SecState of Colorado)" = "message_griswold",
+        "Susan Greenhalgh (Harvard Anthropologist)" = "message_greenhalgh",
+        "Josh Hawley (Senator from Missouri)" = "message_hawley"
       ),
       # Only for two-way
       "Election Threat (Most Concerning)" = c(
