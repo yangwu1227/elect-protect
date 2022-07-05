@@ -81,36 +81,23 @@ topline_internal <- function(df, variable, weight) {
 #' @param df A data frame.
 #' @param var A length-one character vector for removing prefixes.
 #' @param weight A length-one character vector for the weight variable.
+#' @param group A group variable for determining which code path to execute.
 #'
 #' @return A `data.table` object.
 #'
 #' @keywords internal
-topline_multiselect_internal <- function(df, var, weight) {
+topline_multiselect_internal <- function(df, var, weight, group) {
 
   # Multiple selection questions
   cols <- setdiff(names(df), weight)
   # Count column frequency (sum of weight vector)
-  col_frequency_list <- lapply(
-    X = cols,
-    FUN = function(x) {
-      # Set 'x' in 'cols' as key
-      setkeyv(x = df, cols = x)
-      # Subset rows to eliminate "Not Selected", then sum the 'weight' column
-      sum <- sum(df["Selected"][[weight]])
-      setkeyv(x = df, cols = NULL)
-      # Return a single double vector
-      sum
-    }
-  )
-
-  # Remove prefixes
-  cols <- stri_replace_all_regex(str = cols, pattern = paste0(var, "_"), replacement = "")
+  sum_vec <- multiselect_helper(df, var, weight, group, cols)
 
   # Topline
   topline <- data.table(
     Response = str_format(str = cols),
-    Frequency = round(unlist(col_frequency_list), digits = 0),
-    Percent = round(unlist(col_frequency_list) / sum(df[[weight]]) * 100, digits = 1)
+    Frequency = round(sum_vec, digits = 0),
+    Percent = round(sum_vec / sum(df[[weight]]) * 100, digits = 1)
   )
   # Add a row of totals (sum down)
   topline <- rbindlist(list(
@@ -119,6 +106,123 @@ topline_multiselect_internal <- function(df, var, weight) {
   ))
 
   topline
+}
+
+
+#' Helper for handling multiple selection questions
+#'
+#' @param df A data frame.
+#' @param var A length-one character vector for removing prefixes.
+#' @param weight A length-one character vector for the weight variable.
+#' @param group A group variable for determining which code path to execute.
+#' @param cols A character vector of multiple-selection column names.
+#'
+#' @return A double vector.
+#'
+#' @keywords internal
+multiselect_helper <- function(df, var, weight, group, cols) {
+  if (group == "news_source") {
+
+    # Remove 'none above' and 'dislike news' from list
+    cols_minus_none_dislike <- cols[1:(length(cols) - 2)]
+
+    sum_list <- lapply(
+      X = cols_minus_none_dislike,
+      FUN = function(x) {
+        # Set 'x' in 'cols' as key
+        setkeyv(x = df, cols = x)
+        # Subset rows to eliminate "Non-group", then sum the 'weight' column
+        sum <- sum(df["My preferred news source"][[weight]])
+        setkeyv(x = df, cols = NULL)
+        # Return a single double vector
+        sum
+      }
+    )
+
+    # Special handling for 'dislike news'
+    setkeyv(x = df, cols = cols[length(cols) - 1])
+    sum_dislike <- sum(df["I dislike news"][[weight]])
+    setkeyv(x = df, cols = NULL)
+
+    # Special handling for 'none above'
+    setkeyv(x = df, cols = cols[length(cols)])
+    sum_none <- sum(df["Selected"][[weight]])
+    setkeyv(x = df, cols = NULL)
+
+    c(unlist(sum_list), sum_dislike, sum_none)
+  } else if (group == "most_concern") {
+
+    # Remove 'none above' from list
+    cols_minus_none <- cols[-length(cols)]
+
+    sum_list <- lapply(
+      X = cols_minus_none,
+      FUN = function(x) {
+        # Set 'x' in 'cols' as key
+        setkeyv(x = df, cols = x)
+        # Subset rows to eliminate "Non-group", then sum the 'weight' column
+        sum <- sum(df["Most concerning"][[weight]])
+        setkeyv(x = df, cols = NULL)
+        # Return a single double vector
+        sum
+      }
+    )
+
+    # Special handling for 'none above'
+    setkeyv(x = df, cols = cols[length(cols)])
+    sum_vec <- c(unlist(sum_list), sum(df["Selected"][[weight]]))
+    setkeyv(x = df, cols = NULL)
+
+    sum_vec
+  } else if (group == "least_concern") {
+
+    # Remove 'none above' from list
+    cols_minus_none <- cols[-length(cols)]
+
+    sum_list <- lapply(
+      X = cols_minus_none,
+      FUN = function(x) {
+        # Set 'x' in 'cols' as key
+        setkeyv(x = df, cols = x)
+        # Subset rows to eliminate "Non-group", then sum the 'weight' column
+        sum <- sum(df["Least concerning"][[weight]])
+        setkeyv(x = df, cols = NULL)
+        # Return a single double vector
+        sum
+      }
+    )
+
+    # Special handling for 'none above'
+    setkeyv(x = df, cols = cols[length(cols)])
+    sum_vec <- c(unlist(sum_list), sum(df["Selected"][[weight]]))
+    setkeyv(x = df, cols = NULL)
+
+    sum_vec
+  } else if (group == "least_informed") {
+
+    # Remove 'none above' from list
+    cols_minus_none <- cols[-length(cols)]
+
+    sum_list <- lapply(
+      X = cols_minus_none,
+      FUN = function(x) {
+        # Set 'x' in 'cols' as key
+        setkeyv(x = df, cols = x)
+        # Subset rows to eliminate "Non-group", then sum the 'weight' column
+        sum <- sum(df["Least informed about"][[weight]])
+        setkeyv(x = df, cols = NULL)
+        # Return a single double vector
+        sum
+      }
+    )
+
+    # Special handling for 'none above'
+    setkeyv(x = df, cols = cols[length(cols)])
+    sum_vec <- c(unlist(sum_list), sum(df["Selected"][[weight]]))
+    setkeyv(x = df, cols = NULL)
+
+    sum_vec
+  }
 }
 
 #' Crosstab

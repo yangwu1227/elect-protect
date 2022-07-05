@@ -4,7 +4,7 @@
 \alias{topline_multiselect_internal}
 \title{Topline (multiple-selection)}
 \usage{
-topline_multiselect_internal(df, var, weight)
+topline_multiselect_internal(df, var, weight, group)
 }
 \arguments{
 \item{df}{A data frame.}
@@ -12,6 +12,8 @@ topline_multiselect_internal(df, var, weight)
 \item{var}{A length-one character vector for removing prefixes.}
 
 \item{weight}{A length-one character vector for the weight variable.}
+
+\item{group}{A group variable for determining which code path to execute.}
 }
 \value{
 A \code{data.table} object.

@@ -28,7 +28,7 @@ topline <- function(var, weight = "weight", db) {
       as.data.table()
 
     # Topline
-    topline <- topline_multiselect_internal(df, var, weight)
+    topline <- topline_multiselect_internal(df, var, weight, group = var)
 
     # Branch 2) Non-multiple-selection
   } else {
