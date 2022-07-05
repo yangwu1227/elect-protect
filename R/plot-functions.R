@@ -31,10 +31,10 @@ plot_xtab <- function(data) {
   # Education
   if (xvar == "Education Rollup" | color == "Education Rollup") {
     df[, `Education Rollup` := fcase(
-      `Education Rollup` == "bach degree", "b. Bachelor's Degree",
-      `Education Rollup` == "less than bach", "c. Less Than Bachelor's Degree",
-      `Education Rollup` == "grad", "a. Graduate Degree",
-      `Education Rollup` == "Dont know", "d. Don't Know"
+      `Education Rollup` == "Bach degree", "b. Bachelor's degree",
+      `Education Rollup` == "Less than bach", "c. Less than Bachelor's degree",
+      `Education Rollup` == "Grad", "a. Graduate degree",
+      `Education Rollup` == "Dont know", "d. Don't know"
     )]
   }
   # Messages
@@ -82,10 +82,10 @@ plot_xtab <- function(data) {
   if (xvar == "Party" | color == "Party") {
     df[, Party := fcase(
       Party == "Republican", "d. Republican",
-      Party == "Independent, leaning Democratic", "c. Independent, leaning Republican",
-      Party == "Independent, leaning Democratic", "b. Independent, leaning Democratic",
-      Party == "Democrat", "a. Democract",
-      Party == "Dont know", "e. Don't Know",
+      Party == "Independent, leaning democratic", "c. Independent, leaning Republican",
+      Party == "Independent, leaning democratic", "b. Independent, leaning Democratic",
+      Party == "Democrat", "a. Democrat",
+      Party == "Dont know", "e. Don't know",
       default = NA
     )]
   }
@@ -96,7 +96,7 @@ plot_xtab <- function(data) {
       Ideology == "Somewhat conservative", "c. Somewhat conservative",
       Ideology == "Somewhat liberal", "b. Somewhat liberal",
       Ideology == "Very liberal", "a. Very liberal",
-      Ideology == "Dont know", "e. Don't Know",
+      Ideology == "Dont know", "e. Don't know",
       default = NA
     )]
   }
@@ -107,18 +107,18 @@ plot_xtab <- function(data) {
       `Democracy Fairness` == "Somewhat unfairly", "c. Somewhat unfairly",
       `Democracy Fairness` == "Somewhat fairly", "b. Somewhat fairly",
       `Democracy Fairness` == "Very fairly", "a. Very fairly",
-      `Democracy Fairness` == "DK", "e. Don't Know",
+      `Democracy Fairness` == "Dk", "e. Don't know",
       default = NA
     )]
   }
   # Party Identification
   if (xvar == "Party Identification" | color == "Party Identification") {
     df[, `Party Identification` := fcase(
-      `Party Identification` == "Strongly dont identify", "d. Strongly dont identify",
-      `Party Identification` == "Somewhat dont identify", "c. Somewhat dont identify",
+      `Party Identification` == "Strongly dont identify", "d. Strongly don't identify",
+      `Party Identification` == "Somewhat dont identify", "c. Somewhat don't identify",
       `Party Identification` == "Somewhat identify", "b. Somewhat identify",
       `Party Identification` == "Strongly identify", "a. Strongly identify",
-      `Party Identification` == "Dont know", "e. Don't Know",
+      `Party Identification` == "Dont know", "e. Don't know",
       default = NA
     )]
   }
