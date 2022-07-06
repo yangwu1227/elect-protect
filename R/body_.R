@@ -106,7 +106,8 @@ body_ <- function() {
                   "Experiences & Impressions",
                   "Political Messaging",
                   "Demographics",
-                  "Multiple-Selection Questions"
+                  "Multiple-Selection Questions",
+                  "Modeled Segmentations"
                 ),
                 selected = NULL
               ),
