@@ -37,16 +37,20 @@ app_sys <- function(...) {
 #'
 #' @keywords internal
 rank_multi_select <- function(df, cols, model_col, multiselect_cat) {
+
+  # To prevent R CMD check notes
+  `.` <- weight <- `na.omit` <- NULL
+
   frames <- lapply(
     X = cols,
     FUN = function(col) {
       # Get percentages of 'multiselect_cat' (selection multiple selection option) for each group in 'model_col'
       frame <- df[,
-                  {
-                    group_weight <- sum(weight)
-                    .SD[, .(percent = sum(weight) / group_weight), by = col]
-                  },
-                  by = model_col
+        {
+          group_weight <- sum(weight)
+          .SD[, .(percent = sum(weight) / group_weight), by = col]
+        },
+        by = model_col
       ][get(col) == multiselect_cat, c(1, 3)]
 
       # Renmove NA group in 'model_col'
