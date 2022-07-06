@@ -126,6 +126,14 @@ choices <- function() {
         "Election Threat (Most Concerning)" = "most_concern",
         "Election Threat (Least Concerning)" = "least_concern",
         "Election Threat (Least Informed)" = "least_informed"
+      ),
+      # Modeled columns
+      "Modeled Segmentations" = c(
+        "Climate Change Believer" = "climate_change_believer",
+        "2024 Election Trust" = "election_trust_2024",
+        "January 6 Justification" = "january_6_justification",
+        "Feeling Towards Opposition Party" = "opposition_party_feeling",
+        "Political Division Helper" = "political_division_helper"
       )
     ),
     ptype = character(),

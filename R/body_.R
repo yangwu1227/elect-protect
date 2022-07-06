@@ -246,7 +246,8 @@ body_ <- function() {
                   "Election Threat (Least Concerning)",
                   "Election Threat (Least Informed)",
                   "Demographics",
-                  "News Source"
+                  "News Source",
+                  "Modeled Segmentations"
                 ),
                 selected = "Demographics"
               ),
@@ -266,7 +267,8 @@ body_ <- function() {
                   "Election Threat (Least Concerning)",
                   "Election Threat (Least Informed)",
                   "Demographics",
-                  "News Source"
+                  "News Source",
+                  "Modeled Segmentations"
                 ),
                 selected = "Experiences & Impressions"
               ),

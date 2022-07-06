@@ -140,7 +140,15 @@ questions <- function() {
       "news_source" = news,
       "most_concern" = most_concern,
       "least_concern" = least_concern,
-      "least_informed" = least_informed
+      "least_informed" = least_informed,
+
+      # Modeled columns ---------------------------------------------------------
+
+      "climate_change_believer" = "'Climate change strong believer' is defined for respondents who fall above 75 on a 0-100 scoring scale, 'Unsure' is defined for respondents who fall between 50 and 75, and 'Climate change denier' is defined for respondents who fall below 25 on the scale.",
+      "election_trust_2024" = "'Trust 2024 strongly' is defined for respondents who fall above 75 on a 0-100 scoring scale, 'Kinda trust 2024' is defined for respondents who fall between 50 and 75, and 'Distrust 2024 election' is defined for respondents who fall below 25 on the scale.",
+      "january_6_justification" = "'Strong black mark' is defined for respondents who fall above 75 on a 0-100 scoring scale, 'Weak black mark' is defined for respondents who fall between 50 and 75, and 'Justified' is defined for respondents who fall below 25 on the scale.",
+      "opposition_party_feeling" = "'Green feeling' respondents describe the oppposition party using the words 'curious','respect', or 'inspired'; 'Yellow feeling' respondents use the words 'fearful', 'anxious', or 'guarded'; 'Red feeling' respondents use the words 'anger', 'resentful', or 'skeptical'.",
+      "political_division_helper" = "'Political division helper' respondents are actively bridging divides, 'Maybe political division helper' respondents are willing to help bridge divides, and 'Political division non-helper' respondents are not interested in bridging divides."
     ),
     ptype = character(),
     class = "ElectProtect_questions"
