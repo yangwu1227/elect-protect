@@ -12,10 +12,24 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 ElectProtect is a Shiny application built on the
 [bs4Dash](https://rinterface.github.io/bs4Dash/) package.
 
+## Dashboard Interface
+
+### Primer
+
+![](inst/extdata/primer.png)
+
+### Topline
+
+![](inst/extdata/topline.png)
+
+### Cross-Tabulation
+
+![](inst/extdata/crosstab.png)
+
 ## Installation
 
-You can install the development version of ElectProtect from
-[GitHub](https://github.com/) with:
+You can install the development version of ElectProtect from Github
+with:
 
 ``` r
 # install.packages("devtools")
