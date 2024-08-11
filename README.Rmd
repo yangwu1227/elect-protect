@@ -43,3 +43,28 @@ You can install the development version of ElectProtect from Github with:
 # install.packages("devtools")
 devtools::install_github("YangWu1227/elect-protect")
 ```
+
+## Usage
+
+The `database.sqlite` file is located in the `inst/extdata` directory. The application can be run with the following code:
+
+```{r, eval = FALSE}
+library(ElectProtect)
+
+choice_list <- choices()
+question_list <- questions()
+
+# Instantiate database connection object ----------------------------------
+
+db <- dbConnect(
+  drv = SQLite(),
+  dbname = app_sys("extdata", "database.sqlite")
+)
+onStop(fun = function() {
+  dbDisconnect(db)
+})
+
+# Run application ---------------------------------------------------------
+
+runApp(choice_list = choice_list, question_list = question_list, db = db)
+```
